@@ -1,0 +1,336 @@
+ /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+  }
+
+  .shelf, .cashier {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    margin-top: 0;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  /* Rak Produk */
+  #product-area {
+    flex: 1;
+    background: #f1f5f9;
+    border: 2px dashed #94a3b8;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    overflow-y: auto;
+    min-height: 250px;
+  }
+
+  .product {
+    width: 70px;
+    height: 70px;
+    background: #60a5fa;
+    color: white;
+    border-radius: 12px;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .product:active {
+    cursor: grabbing;
+  }
+
+  .product-price {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* Scanner */
+  #scanner {
+    background: #e0f2fe;
+    border-radius: 12px;
+    border: 2px solid #3b82f6;
+    height: 100px;
+    margin: 20px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #2563eb;
+  }
+
+  .scan-line {
+    position: absolute;
+    width: 80%;
+    height: 4px;
+    background: #ef4444;
+    top: 0;
+    left: 10%;
+    border-radius: 2px;
+    animation: scanAnim 2s infinite ease-in-out;
+  }
+
+  @keyframes scanAnim {
+    0% { top: 0; }
+    50% { top: calc(100% - 4px); }
+    100% { top: 0; }
+  }
+
+  /* Keranjang */
+  .cart-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-label {
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #334155;
+  }
+
+  #cart {
+    flex: 1;
+    background: #dcfce7;
+    border-radius: 12px;
+    border: 2px dashed #4ade80;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 15px;
+    overflow-y: auto;
+    min-height: 250px;
+  }
+
+  #cart .product {
+    background: #22c55e;
+    box-shadow: 0 3px 8px rgba(34,197,94,0.7);
+  }
+
+  .total-label {
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #16a34a;
+    text-align: center;
+  }
+
+  /* Tombol */
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  button {
+    background: #2563eb;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(37,99,235,0.4);
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: #1e40af;
+  }
+
+  button:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+/* Modal Background */
+.modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 320px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+.calculator {
+  width: 200px;
+  margin-top: 10px;
+  background: #f3f4f6;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#display {
+  background: #fff;
+  padding: 10px;
+  font-size: 20px;
+  text-align: right;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.calc-buttons button {
+  padding: 10px;
+  font-size: 18px;
+  background: #e2e8f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.calc-buttons button:hover {
+  background: #cbd5e1;
+}
+
+.calc-buttons button:active {
+  background: #94a3b8;
+  color: #fff;
+}
+/*ini npc*/
+.queue-area {
+  position: relative;
+  height: 400px;
+  width: 200px;
+  background: #f1f5f9;
+  border: 2px dashed #94a3b8;
+  border-radius: 12px;
+  margin-top: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.player-cashier {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+.npc {
+  width: 50px;
+  height: 50px;
+  background: #fbbf24;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -60px;
+  opacity: 0;
+  animation: moveDown 5s linear forwards;
+}
+
+@keyframes moveDown {
+  0% { top: -60px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 300px; opacity: 1; }
+}
+
+#stamina-container {
+  margin-bottom: 1rem;
+}
+#status-panel {
+  padding: 10px;
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+#status-panel p {
+  margin: 4px 0;
+  font-weight: bold;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  margin-left: 8px;
+  font-size: 14px;
+  vertical-align: middle;
+  transition: background-color 0.3s ease;
+}
+
+/* Warna beda untuk tiap level */
+.level1 { background-color: #9ca3af; }  /* abu-abu */
+.level2 { background-color: #3b82f6; }  /* biru */
+.level3 { background-color: #10b981; }  /* hijau */
+.level4 { background-color: #f59e0b; }  /* oranye */
+.level5 { background-color: #ef4444; }  /* merah */
+

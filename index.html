@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kasir Minimarket Modern</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🧍‍♂️ Kasir Minimarket Modern | 🤖 NPC Meletakkan Produk</h1>
+<div id="stamina-container">
+  <label>Stamina: </label>
+  <progress id="stamina-bar" value="100" max="100"></progress>
+  <span id="stamina-text">100</span>
+</div>
+<div id="status-panel">
+  <p>Level: <span id="playerLevel">1</span> <span id="xpBadge" class="badge level1">⚪</span></p>
+  <p>XP: <span id="playerXP">0</span> / <span id="xpPerLevel">100</span></p>
+</div>
+<div class="container">
+  <!-- npc antre -->
+<div class="queue-area">
+  <div id="npc-container"></div>
+  <div class="player-cashier">🧍‍♂️ Player (Kasir)</div>
+  <div id="npc" class="npc" style="display:none;">🤖</div>
+</div>
+
+  <div class="shelf">
+    <h2>Rak Produk (NPC)</h2>
+    <div id="product-area">Belum ada pelanggan...</div>
+  </div>
+
+  <!-- Tambahkan input uang bayar dan display kembalian di kasir -->
+<div class="cashier">
+  <h2>Kasir</h2>
+  <div id="scanner">
+    🖨️ Scanner
+    <div class="scan-line"></div>
+  </div>
+
+  <div class="cart-section">
+    <div class="cart-label">Keranjang Belanja</div>
+    <div id="cart"></div>
+    <div class="total-label">Total: Rp <span id="total">0</span></div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="startInfiniteNPCQueue()">Mulai Antrian NPC Tanpa Batas</button>
+    <button id="autoPayBtn">Bayar Otomatis</button>
+
+  </div>
+</div>
+<!-- Modal Receipt NPC -->
+<div id="receiptModal" class="modal">
+  <div class="modal-content">
+    <span id="closeReceipt" class="close">&times;</span>
+    <h2>🧾 Receipt NPC</h2>
+    <pre id="receiptText"></pre>
+  </div>
+</div>
+<h3>Bayar Uang Tunai:</h3>
+<div class="calculator">
+  <div id="display">0</div>
+  <div class="calc-buttons">
+    <button onclick="pressNumber(1)">1</button>
+    <button onclick="pressNumber(2)">2</button>
+    <button onclick="pressNumber(3)">3</button>
+    <button onclick="pressNumber(4)">4</button>
+    <button onclick="pressNumber(5)">5</button>
+    <button onclick="pressNumber(6)">6</button>
+    <button onclick="pressNumber(7)">7</button>
+    <button onclick="pressNumber(8)">8</button>
+    <button onclick="pressNumber(9)">9</button>
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="pressNumber(0)">0</button>
+    <button onclick="addManualPrice()">Enter</button> <!-- tombol Enter input manual -->
+  </div>
+</div>
+
+
+</div>
+<audio id="sound-checkout" src="/sounds/checkout.mp3" preload="auto"></audio>
+<audio id="sound-receipt" src="/sounds/receipt.mp3" preload="auto"></audio>
+
+
+
+<script src="main.js"></script>
+
+</body> </html>
